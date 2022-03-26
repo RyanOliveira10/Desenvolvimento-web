@@ -1,0 +1,13 @@
+os designers da pagina de inicio e da pagina de fim de jogo precisam
+ser feitos
+
+o designer da pagina de jogo precisa ser modernizado
+
+o script js precisa sofrer refatoramento
+
+
+//funçoes a serem criadas:
+
+definir o nivel de dificuldade 
+e o tempo de jogo
+colocar uma musica de fundo

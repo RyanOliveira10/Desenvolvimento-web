@@ -1,0 +1,23 @@
+body{
+  box-sizing: border-box;
+  padding: 0;
+  top: 0;
+  margin: 0;
+  background: url(../assets/bg.jpg);
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
+.d-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn{
+  margin: 10px;
+}
