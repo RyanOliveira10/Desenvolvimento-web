@@ -9,13 +9,13 @@ class Despesa {
   }
 
   validarDados() {
-    for(let i in this){
-      if(this[i] == undefined || this[i] == '' || this[i] == null){
+    for (let i in this) {
+      if (this[i] == undefined || this[i] == "" || this[i] == null) {
         return false;
       }
     }
     return true;
-  };
+  }
 }
 
 class Bd {
@@ -25,6 +25,22 @@ class Bd {
     if (id === null) {
       localStorage.setItem("id", 0);
     }
+  }
+
+  recuperarTodosRegistros() {
+    let despesas = Array();
+
+    let id = localStorage.getItem("id");
+
+    for (let i = 1; i <= id; i++) {
+      let despesa = JSON.parse(localStorage.getItem(i));
+
+      if(despesa === null) {
+        continue
+      }
+      despesas.push(despesa);
+    }
+    console.log(despesas);
   }
 
   getProximoId() {
@@ -58,12 +74,18 @@ function cadastrarDespesa() {
     valor.value
   );
 
-  if(despesa.validarDados()){
+  if (despesa.validarDados()) {
     //bd.gravar(despesa)
-    $('#sucessoGravacao').modal('show');
-  }else{
-    $('#erroGravacao').modal('show');
+    $("#sucessoGravacao").modal("show");
+  } else {
+    $("#erroGravacao").modal("show");
   }
 
   //console.log(despesa);
+}
+
+function carregaListaDespesas() {
+  let despesas = Array();
+  despesas = bd.recuperarTodosRegistros();
+  console.log(despesas);
 }
