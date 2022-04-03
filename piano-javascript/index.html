@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Piano Virtual</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg=="
+	 crossorigin="anonymous" />
+</head>
+
+<body class="markdown-body">
+	<div>
+		<h1>Piano Virtual</h1>
+		<p>
+			Olá! Este site permite que você faça música como faria em qualquer piano! Vamos fazer um som!
+		</p>
+		<p>
+			Aperte a tecla <kbd>S</kbd> para fazer um C central (ou Dó Central), aperte
+      <kbd>D</kbd> para fazer um D central (ou Ré Central) e assim por diante até o B com a tecla <kbd>K</kbd>.
+    </p>
+  </div>
+  <div id="piano">
+    <span class="tecla" id="C"><strong>C</strong></span>
+    <span class="tecla" id="D"><strong>D</strong></span>
+    <span class="tecla" id="E"><strong>E</strong></span>
+    <span class="tecla" id="F"><strong>F</strong></span>
+    <span class="tecla" id="G"><strong>G</strong></span>
+    <span class="tecla" id="A"><strong>A</strong></span>
+    <span class="tecla" id="B"><strong>B</strong></span>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.52/Tone.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
