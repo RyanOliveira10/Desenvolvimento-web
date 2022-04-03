@@ -1,0 +1,190 @@
+*/ {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow: hidden;
+    margin: 0;
+}
+
+.container{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url("../img/diamond-sunset.svg");
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    max-width: 120rem;
+}
+
+.login{
+    justify-content: center;
+    display: grid;
+    align-items: center;
+}
+
+.formulario{
+    position: relative;
+    width: 100%;
+}
+
+.login-label{
+    display: block;
+    border: rebeccapurple;
+}
+
+.login-label input{
+    width: 20rem;
+    height: 2rem;
+    margin-bottom: 2rem;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: white;
+    background-color: transparent;
+    font-size: 1.5rem;
+    color: white;
+}
+
+::-webkit-input-placeholder{
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0;
+}
+
+input:focus{
+    box-shadow: 0,0,0,0;
+    outline: 0;
+}
+
+.div-alterar-dados{
+    display: flex;
+    margin-left: 0;
+}
+
+.alterar-dados a{
+    color: white;
+    text-decoration: none;
+}
+
+.senha{
+    padding-right: 1rem;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button button{
+    width: 10rem;
+    height: 2rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    border-color: transparent;
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+.button button a{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+/*media screem*/
+@media (max-width:557px) {
+
+    .imagem{
+        width: 200px;
+        margin-left: 9%;
+    }
+
+    .imagem img{
+        width: 100%;
+    }
+
+    .login-label input{
+        width: 15rem;
+        height: 1.5rem;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .alterar-dados{
+        font-size: 80%;
+    }
+
+    ::-webkit-input-placeholder{
+        box-shadow: 0;
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    .div-alterar-dados{
+        display: grid;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #especifico{
+        justify-content: center;
+        display: flex;
+    }
+
+    .senha{
+        margin-right: 0;
+        margin-left: 15px;
+    }
+
+    .button button{
+        width: 6rem;
+        height: 1.5rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width:390px) {
+
+    .imagem{
+        width: 150px;
+        margin-left: 5%;
+    }
+
+    .imagem img{
+        width: 100%;
+    }
+
+    .login-label input{
+        width: 10rem;
+        height: 1.5rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .alterar-dados{
+        font-size: 70%;
+    }
+
+    ::-webkit-input-placeholder{
+        color: white;
+        font-size: 1rem;
+        box-shadow: 0;
+    }
+
+    .senha{
+        margin-right: 0;
+    }
+
+    .button button{
+        width: 4rem;
+        height: 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.6rem;
+    }
+}
