@@ -63,9 +63,37 @@ class Bd {
     return despesas;
   }
 
-	pesquisar(despesa){
-		console.log(despesa);
-	}
+  pesquisar(despesa) {
+    let despesasFiltradas = Array();
+    despesasFiltradas = this.recuperarTodosRegistros();
+
+    if (despesa.ano != "") {
+      despesasFiltradas = despesasFiltradas.filter((d) => d.ano == despesa.ano);
+    }
+    if (despesa.tipo != "") {
+      despesasFiltradas = despesasFiltradas.filter(
+        (d) => d.tipo == despesa.tipo
+      );
+    }
+    if (despesa.mes != "") {
+      despesasFiltradas = despesasFiltradas.filter((d) => d.mes == despesa.mes);
+    }
+    if (despesa.dia != "") {
+      despesasFiltradas = despesasFiltradas.filter((d) => d.dia == despesa.dia);
+    }
+    if (despesa.descricao != "") {
+      despesasFiltradas = despesasFiltradas.filter(
+        (d) => d.descricao == despesa.descricao
+      );
+    }
+    if (despesa.valor != "") {
+      despesasFiltradas = despesasFiltradas.filter(
+        (d) => d.valor == despesa.valor
+      );
+    }
+
+    return despesasFiltradas;
+  }
 }
 
 let bd = new Bd();
@@ -185,6 +213,39 @@ function pesquisarDespesa() {
   let valor = document.getElementById("valor").value;
 
   let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor);
+  let despesas = bd.pesquisar(despesa);
+  bd.pesquisar(despesa);
+  let listaDespesas = document.getElementById("listaDespesas");
+  listaDespesas.innerHTML = "";
 
-	bd.pesquisar(despesa);
+  despesas.forEach(function (d) {
+    //Criando a linha (tr)
+    linha = listaDespesas.insertRow();
+
+    //Criando as colunas (td)
+    linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`;
+
+    //Ajustar o tipo
+    switch (d.tipo) {
+      case "1":
+        d.tipo = "Alimentação";
+        break;
+      case "2":
+        d.tipo = "Educação";
+        break;
+      case "3":
+        d.tipo = "Lazer";
+        break;
+      case "4":
+        d.tipo = "Saúde";
+        break;
+      case "5":
+        d.tipo = "Transporte";
+        break;
+    }
+    linha.insertCell(1).innerHTML = d.tipo;
+    linha.insertCell(2).innerHTML = d.descricao;
+    linha.insertCell(3).innerHTML = d.valor;
+    console.log(d);
+  });
 }
