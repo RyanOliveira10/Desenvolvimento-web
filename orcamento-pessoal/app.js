@@ -57,6 +57,7 @@ class Bd {
         continue;
       }
 
+      despesa.id = i;
       despesas.push(despesa);
     }
 
@@ -93,6 +94,11 @@ class Bd {
     }
 
     return despesasFiltradas;
+  }
+
+  remover(id) {
+    localStorage.removeItem(id);
+
   }
 }
 
@@ -154,32 +160,19 @@ function cadastrarDespesa() {
   }
 }
 
-function carregaListaDespesas() {
-  let despesas = Array();
+function carregaListaDespesas(despesas = Array(), filtro = false) {
 
-  despesas = bd.recuperarTodosRegistros();
-
-  /*
-
-	<tr>
-		<td>15/03/2018</td>
-		<td>Alimentação</td>
-		<td>Compras do mês</td>
-		<td>444.75</td>
-	</tr>
-
-	*/
+  if (despesas.length == 0 && filtro == false) {
+    despesas = bd.recuperarTodosRegistros();
+  }
 
   let listaDespesas = document.getElementById("listaDespesas");
+  listaDespesas.innerHTML = "";
 
   despesas.forEach(function (d) {
-    //Criando a linha (tr)
     var linha = listaDespesas.insertRow();
-
-    //Criando as colunas (td)
     linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`;
 
-    //Ajustar o tipo
     switch (d.tipo) {
       case "1":
         d.tipo = "Alimentação";
@@ -200,7 +193,22 @@ function carregaListaDespesas() {
     linha.insertCell(1).innerHTML = d.tipo;
     linha.insertCell(2).innerHTML = d.descricao;
     linha.insertCell(3).innerHTML = d.valor;
+
+    let btn = document.createElement("button");
+    btn.className = 'btn btn-danger';
+    btn.innerHTML = '<i class="fas fa-times"></i>';
+    btn.id = `id_despesa_${d.id}`
+    btn.onclick = function() {
+      let id = this.id.replace('id_despesa_', "");
+      bd.remover(id);
+      window.location.reload();
+    }
+
+    linha.insertCell(4).append(btn);
+
+
     console.log(d);
+
   });
 }
 
@@ -214,38 +222,6 @@ function pesquisarDespesa() {
 
   let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor);
   let despesas = bd.pesquisar(despesa);
-  bd.pesquisar(despesa);
-  let listaDespesas = document.getElementById("listaDespesas");
-  listaDespesas.innerHTML = "";
 
-  despesas.forEach(function (d) {
-    //Criando a linha (tr)
-    linha = listaDespesas.insertRow();
-
-    //Criando as colunas (td)
-    linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/${d.ano}`;
-
-    //Ajustar o tipo
-    switch (d.tipo) {
-      case "1":
-        d.tipo = "Alimentação";
-        break;
-      case "2":
-        d.tipo = "Educação";
-        break;
-      case "3":
-        d.tipo = "Lazer";
-        break;
-      case "4":
-        d.tipo = "Saúde";
-        break;
-      case "5":
-        d.tipo = "Transporte";
-        break;
-    }
-    linha.insertCell(1).innerHTML = d.tipo;
-    linha.insertCell(2).innerHTML = d.descricao;
-    linha.insertCell(3).innerHTML = d.valor;
-    console.log(d);
-  });
+  carregaListaDespesas(despesas, true);
 }
